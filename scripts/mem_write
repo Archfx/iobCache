@@ -1,0 +1,34 @@
+case(addr)
+5'b00000 : ram_0 <= din;
+5'b00001 : ram_1 <= din;
+5'b00010 : ram_2 <= din;
+5'b00011 : ram_3 <= din;
+5'b00100 : ram_4 <= din;
+5'b00101 : ram_5 <= din;
+5'b00110 : ram_6 <= din;
+5'b00111 : ram_7 <= din;
+5'b01000 : ram_8 <= din;
+5'b01001 : ram_9 <= din;
+5'b01010 : ram_10 <= din;
+5'b01011 : ram_11 <= din;
+5'b01100 : ram_12 <= din;
+5'b01101 : ram_13 <= din;
+5'b01110 : ram_14 <= din;
+5'b01111 : ram_15 <= din;
+5'b10000 : ram_16 <= din;
+5'b10001 : ram_17 <= din;
+5'b10010 : ram_18 <= din;
+5'b10011 : ram_19 <= din;
+5'b10100 : ram_20 <= din;
+5'b10101 : ram_21 <= din;
+5'b10110 : ram_22 <= din;
+5'b10111 : ram_23 <= din;
+5'b11000 : ram_24 <= din;
+5'b11001 : ram_25 <= din;
+5'b11010 : ram_26 <= din;
+5'b11011 : ram_27 <= din;
+5'b11100 : ram_28 <= din;
+5'b11101 : ram_29 <= din;
+5'b11110 : ram_30 <= din;
+5'b11111 : ram_31 <= din;
+endcase

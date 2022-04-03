@@ -1,0 +1,36 @@
+# read design 
+read_verilog iob-cache.v
+read_verilog iob-cache.vh
+read_verilog back-end-native.v
+read_verilog cache-memory.v
+read_verilog front-end.v
+read_verilog iob_sp_ram.v
+read_verilog iob_sync_fifo.v
+read_verilog bin_counter.v
+read_verilog iob_2p_ram.v
+read_verilog onehot-to-bin-encoder.v
+read_verilog read-channel-native.v
+read_verilog replacement-policy.v
+read_verilog iob_sp_reg_file.v
+read_verilog write-channel-native.v
+
+# elaborate design hierarchy
+hierarchy -check -top iob_cache
+
+
+
+# the high-level stuff
+# proc; opt; fsm; opt; memory; opt
+# proc_mux
+fsm; opt;
+
+# proc -nomux -noopt -ifx
+
+# proc_rmdead
+
+flatten 
+
+select -module iob_cache
+
+# write inline design
+write_verilog -selected inline.v

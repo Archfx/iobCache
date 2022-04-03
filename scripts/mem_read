@@ -1,0 +1,34 @@
+case(addr)
+5'b00000 : dout <= ram_0;
+5'b00001 : dout <= ram_1;
+5'b00010 : dout <= ram_2;
+5'b00011 : dout <= ram_3;
+5'b00100 : dout <= ram_4;
+5'b00101 : dout <= ram_5;
+5'b00110 : dout <= ram_6;
+5'b00111 : dout <= ram_7;
+5'b01000 : dout <= ram_8;
+5'b01001 : dout <= ram_9;
+5'b01010 : dout <= ram_10;
+5'b01011 : dout <= ram_11;
+5'b01100 : dout <= ram_12;
+5'b01101 : dout <= ram_13;
+5'b01110 : dout <= ram_14;
+5'b01111 : dout <= ram_15;
+5'b10000 : dout <= ram_16;
+5'b10001 : dout <= ram_17;
+5'b10010 : dout <= ram_18;
+5'b10011 : dout <= ram_19;
+5'b10100 : dout <= ram_20;
+5'b10101 : dout <= ram_21;
+5'b10110 : dout <= ram_22;
+5'b10111 : dout <= ram_23;
+5'b11000 : dout <= ram_24;
+5'b11001 : dout <= ram_25;
+5'b11010 : dout <= ram_26;
+5'b11011 : dout <= ram_27;
+5'b11100 : dout <= ram_28;
+5'b11101 : dout <= ram_29;
+5'b11110 : dout <= ram_30;
+5'b11111 : dout <= ram_31;
+endcase
