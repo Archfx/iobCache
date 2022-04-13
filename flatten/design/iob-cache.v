@@ -44,9 +44,9 @@ module iob_cache
     //Master i/f
     input                                       valid,
 // `ifdef WORD_ADDR   
-    input [CTRL_CACHE + FE_ADDR_W -1:FE_BYTE_W] addr, //MSB is used for Controller selection
+    // input [CTRL_CACHE + FE_ADDR_W -1:FE_BYTE_W] addr, //MSB is used for Controller selection
 // `else
-//     input [CTRL_CACHE + FE_ADDR_W -1:0]         addr, //MSB is used for Controller selection
+    input [CTRL_CACHE + FE_ADDR_W -1:0]         addr, //MSB is used for Controller selection
 // `endif
     input [FE_DATA_W-1:0]                       wdata,
     input [FE_NBYTES-1:0]                       wstrb,

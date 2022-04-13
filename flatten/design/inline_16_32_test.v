@@ -566,8 +566,8 @@ module iob_cache(clk, reset, valid, addr, wdata, wstrb, rdata, ready, debug, for
   wire [5:0] _0469_;
   wire [2:0] _0470_;
   wire [5:0] _0471_;
-  (* src = "iob-cache.v:47" *)
-  input [11:2] addr;
+  (* src = "iob-cache.v:49" *)
+  input [11:0] addr;
   (* src = "iob-cache.v:217|back-end-native.v:52" *)
   wire \back_end.mem_valid_read ;
   (* src = "iob-cache.v:217|back-end-native.v:52" *)
@@ -767,7 +767,7 @@ module iob_cache(clk, reset, valid, addr, wdata, wstrb, rdata, ready, debug, for
   (* src = "iob-cache.v:61" *)
   output wtb_empty_out;
   assign mem_valid = \back_end.mem_valid_read  | (* src = "iob-cache.v:217|back-end-native.v:55" *) \back_end.mem_valid_write ;
-  assign { mem_addr[11:6], mem_addr[2] } = \back_end.mem_valid_read  ? (* src = "iob-cache.v:217|back-end-native.v:54" *) { addr[11:6], \back_end.read_fsm.word_counter  } : { \cache_memory.line_tag , \back_end.write_fsm.word_counter  };
+  assign { mem_addr[11:6], mem_addr[2] } = \back_end.mem_valid_read  ? (* src = "iob-cache.v:217|back-end-native.v:54" *) { addr[9:4], \back_end.read_fsm.word_counter  } : { \cache_memory.line_tag , \back_end.write_fsm.word_counter  };
   assign _0000_ = \back_end.read_addr  + (* src = "iob-cache.v:217|back-end-native.v:58|read-channel-native.v:119" *) mem_ready;
   assign _0001_ = _0007_ & \back_end.read_fsm.state [0];
   assign _0002_ = _0008_ & \back_end.read_fsm.state [2];
@@ -873,15 +873,15 @@ module iob_cache(clk, reset, valid, addr, wdata, wstrb, rdata, ready, debug, for
   assign _0024_ = 1'h0 ? (* src = "iob-cache.v:155|cache-memory.v:389" *) 8'h00 : _0050_;
   assign \cache_memory.line_wstrb  = \back_end.read_fsm.replace  ? (* src = "iob-cache.v:155|cache-memory.v:259" *) _0053_ : _0054_;
   assign _0051_ = | (* src = "iob-cache.v:155|cache-memory.v:92" *) { \cache_memory.wstrb_reg [0], \cache_memory.wstrb_reg [1], \cache_memory.wstrb_reg [2], \cache_memory.wstrb_reg [3] };
-  assign _0052_ = \cache_memory.v_reg [addr[5:3] +: 1];
-  assign _0021_ = \cache_memory.dirty_reg [addr[5:3] +: 1];
+  assign _0052_ = \cache_memory.v_reg [addr[3:1] +: 1];
+  assign _0021_ = \cache_memory.dirty_reg [addr[3:1] +: 1];
   assign _0053_ = { 4'h0, \back_end.read_fsm.read_valid , \back_end.read_fsm.read_valid , \back_end.read_fsm.read_valid , \back_end.read_fsm.read_valid  } << (* src = "iob-cache.v:155|cache-memory.v:260" *) { 29'h00000000, \back_end.read_addr , 2'h0 };
   assign _0054_ = _0033_ << (* src = "iob-cache.v:155|cache-memory.v:262" *) { 29'h00000000, \cache_memory.addr_reg [2], 2'h0 };
-  assign _0055_ = 32'd1 << (* src = "iob-cache.v:155|cache-memory.v:392" *) addr[5:3];
+  assign _0055_ = 32'd1 << (* src = "iob-cache.v:155|cache-memory.v:392" *) addr[3:1];
   assign _0056_ = 32'd1 << (* src = "iob-cache.v:155|cache-memory.v:437" *) \cache_memory.addr_reg [5:3];
   assign { _0057_[63:32], rdata } = { \cache_memory.n_ways_block[0].line2mem_block[1].BE_FE_block[0].cache_memory.ram[3].iob_cache_mem.dout , \cache_memory.n_ways_block[0].line2mem_block[1].BE_FE_block[0].cache_memory.ram[2].iob_cache_mem.dout , \cache_memory.n_ways_block[0].line2mem_block[1].BE_FE_block[0].cache_memory.ram[1].iob_cache_mem.dout , \cache_memory.n_ways_block[0].line2mem_block[1].BE_FE_block[0].cache_memory.ram[0].iob_cache_mem.dout , \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.ram[3].iob_cache_mem.dout , \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.ram[2].iob_cache_mem.dout , \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.ram[1].iob_cache_mem.dout , \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.ram[0].iob_cache_mem.dout  } >> (* src = "iob-cache.v:155|cache-memory.v:425" *) { 26'h0000000, \cache_memory.addr_reg [2], 5'h00 };
-  assign \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.addr  = _0031_ ? (* src = "iob-cache.v:155|cache-memory.v:247" *) \cache_memory.addr_reg [5:3] : addr[5:3];
-  assign \cache_memory.n_ways_block[0].line2mem_block[1].BE_FE_block[0].cache_memory.addr  = _0032_ ? (* src = "iob-cache.v:155|cache-memory.v:247" *) \cache_memory.addr_reg [5:3] : addr[5:3];
+  assign \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.addr  = _0031_ ? (* src = "iob-cache.v:155|cache-memory.v:247" *) \cache_memory.addr_reg [5:3] : addr[3:1];
+  assign \cache_memory.n_ways_block[0].line2mem_block[1].BE_FE_block[0].cache_memory.addr  = _0032_ ? (* src = "iob-cache.v:155|cache-memory.v:247" *) \cache_memory.addr_reg [5:3] : addr[3:1];
   assign \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.data_in  = \back_end.read_fsm.replace  ? (* src = "iob-cache.v:155|cache-memory.v:248" *) mem_rdata : \cache_memory.wdata_reg ;
   assign _0074_ = ~ _0058_[0];
   assign _0075_ = ~ _0058_[1];
@@ -1410,13 +1410,13 @@ module iob_cache(clk, reset, valid, addr, wdata, wstrb, rdata, ready, debug, for
   assign _0439_ = _0426_[1] & _0426_[2];
   assign _0440_ = _0442_ & _0439_;
   assign _0441_ = _0426_[0] & _0439_;
-  assign _0467_ = addr[5] ? _0446_ : _0445_;
-  assign _0445_ = addr[4] ? _0448_ : _0447_;
-  assign _0446_ = addr[4] ? _0450_ : _0449_;
-  assign _0447_ = addr[3] ? \cache_memory.tag_memory.ram[1]  : \cache_memory.tag_memory.ram[0] ;
-  assign _0448_ = addr[3] ? \cache_memory.tag_memory.ram[3]  : \cache_memory.tag_memory.ram[2] ;
-  assign _0449_ = addr[3] ? \cache_memory.tag_memory.ram[5]  : \cache_memory.tag_memory.ram[4] ;
-  assign _0450_ = addr[3] ? \cache_memory.tag_memory.ram[7]  : \cache_memory.tag_memory.ram[6] ;
+  assign _0467_ = addr[3] ? _0446_ : _0445_;
+  assign _0445_ = addr[2] ? _0448_ : _0447_;
+  assign _0446_ = addr[2] ? _0450_ : _0449_;
+  assign _0447_ = addr[1] ? \cache_memory.tag_memory.ram[1]  : \cache_memory.tag_memory.ram[0] ;
+  assign _0448_ = addr[1] ? \cache_memory.tag_memory.ram[3]  : \cache_memory.tag_memory.ram[2] ;
+  assign _0449_ = addr[1] ? \cache_memory.tag_memory.ram[5]  : \cache_memory.tag_memory.ram[4] ;
+  assign _0450_ = addr[1] ? \cache_memory.tag_memory.ram[7]  : \cache_memory.tag_memory.ram[6] ;
   assign _0451_ = _0431_ & _0428_[5];
   assign _0452_ = _0432_ & _0428_[5];
   assign _0453_ = _0434_ & _0428_[5];
@@ -1455,7 +1455,7 @@ module iob_cache(clk, reset, valid, addr, wdata, wstrb, rdata, ready, debug, for
   assign _0428_[5] = \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.en  ? (* src = "iob-cache.v:155|cache-memory.v:405|iob_sp_ram.v:31" *) _0468_[5] : 1'h0;
   assign _0469_ = \back_end.read_fsm.replace_valid  ? (* src = "iob-cache.v:155|cache-memory.v:405|iob_sp_ram.v:32" *) \cache_memory.addr_reg [11:6] : 6'hxx;
   assign _0427_ = \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.en  ? (* src = "iob-cache.v:155|cache-memory.v:405|iob_sp_ram.v:31" *) _0469_ : 6'hxx;
-  assign _0470_ = \back_end.read_fsm.replace_valid  ? (* src = "iob-cache.v:155|cache-memory.v:405|iob_sp_ram.v:32" *) addr[5:3] : 3'hx;
+  assign _0470_ = \back_end.read_fsm.replace_valid  ? (* src = "iob-cache.v:155|cache-memory.v:405|iob_sp_ram.v:32" *) addr[3:1] : 3'hx;
   assign _0426_ = \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.en  ? (* src = "iob-cache.v:155|cache-memory.v:405|iob_sp_ram.v:31" *) _0470_ : 3'hx;
   assign _0471_ = \back_end.read_fsm.replace_valid  ? (* src = "iob-cache.v:155|cache-memory.v:405|iob_sp_ram.v:32" *) \cache_memory.line_tag  : _0467_;
   assign _0429_ = \cache_memory.n_ways_block[0].line2mem_block[0].BE_FE_block[0].cache_memory.en  ? (* src = "iob-cache.v:155|cache-memory.v:405|iob_sp_ram.v:31" *) _0471_ : \cache_memory.line_tag ;
@@ -1469,7 +1469,7 @@ module iob_cache(clk, reset, valid, addr, wdata, wstrb, rdata, ready, debug, for
     if (reset)
       \cache_memory.addr_reg  <= 10'h000;
     else
-      \cache_memory.addr_reg  <= addr;
+      \cache_memory.addr_reg  <= addr[9:0];
   always @(posedge clk or posedge reset)
     if (reset)
       \cache_memory.wdata_reg  <= 32'd0;
@@ -1481,64 +1481,6 @@ module iob_cache(clk, reset, valid, addr, wdata, wstrb, rdata, ready, debug, for
     else
       \cache_memory.wstrb_reg  <= wstrb;
   assign debug = 2'h0;
-  assign { mem_addr[5:3], mem_addr[1:0] } = { addr[5:3], 2'h0 };
+  assign { mem_addr[5:3], mem_addr[1:0] } = { addr[3:1], 2'h0 };
   assign mem_wstrb[2:0] = { mem_wstrb[3], mem_wstrb[3], mem_wstrb[3] };
-
-always @(posedge clk)
-    begin
-      if(ready == 1)
-        // debug <= 2'b11;
-        if (wstrb == 0) begin
-        
-          if( addr == 10'h1234 && rdata == 32'hDEADBEEF )
-            begin
-             
-
-              
-              // $display("%b", rdata);
-              $display("FOUND");
-            //   debug <= 2'b01;
-              // debugOutput2 <= 1;
-              // debugOutput3 <= 0;
-              // debugOutput4 <= 1;
-            end
-        //   else if( addr == 14'h579 && rdata == 32'hCAFEEFAC)
-        //     begin
-        //       debug = 2'b10;
-        //     end
-        //   else if( addr[FE_ADDR_W-1:FE_BYTE_W] == 13'h308 && rdata == 32'h01020304)
-        //     begin
-        //   //     assign debugOutput = 8'h3;
-        //   //     debugOutput2 <= 1;
-        //   //     debugOutput3 <= 1;
-        //   //     debugOutput4 <= 0;
-        //       debug = 2'b11;
-        //     end
-          // else if( addr[FE_ADDR_W-1:FE_BYTE_W] == 13'hF00 && rdata == 32'hF1E2D3C4)
-          //     begin
-          //       assign debugOutput = 8'h4;
-          //       debugOutput2 <= 0;
-          //       debugOutput3 <= 1;
-          //       debugOutput4 <= 0;
-          //     end
-          // else if( addr[FE_ADDR_W-1:FE_BYTE_W] == 13'h169 && rdata == 32'hA1B2C3D4)
-          //     begin
-          //       assign debugOutput = 8'h5;
-          //       debugOutput2 <= 1;
-          //       debugOutput3 <= 1;
-          //       debugOutput4 <= 1;
-          //     end
-          // else
-          //     begin
-          //       debug <= 2'b0;
-                
-          //     end
-        // else
-        //  begin
-        //   debug <= 2'b0;
-        
-
-         end
-    end
-
 endmodule
