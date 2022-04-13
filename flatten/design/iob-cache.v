@@ -1,5 +1,7 @@
 `timescale 1ns / 1ps
-`include "iob-cache.vh"
+// `include "iob-cache.vh"
+
+`define CTRL_ADDR_W 5
 
 ///////////////
 // IOb-cache //
@@ -8,14 +10,14 @@
 module iob_cache 
   #(
     //memory cache's parameters
-    parameter FE_ADDR_W   = 8,       //Address width - width of the Master's entire access address (including the LSBs that are discarded, but discarding the Controller's)
-    parameter FE_DATA_W  = 8,       //Data width - word size used for the cache
-    parameter N_WAYS   = 2,        //Number of Cache Ways (Needs to be Potency of 2: 1, 2, 4, 8, ..)
-    parameter LINE_OFF_W = 2,  //Line-Offset Width - 2**NLINE_W total cache lines
-    parameter WORD_OFF_W = 3,      //Word-Offset Width - 2**OFFSET_W total FE_DATA_W words per line - WARNING about LINE2MEM_W (can cause word_counter [-1:0]
-    parameter WTBUF_DEPTH_W = 5,   //Depth Width of Write-Through Buffer
+    parameter FE_ADDR_W   = 12,       //Address width - width of the Master's entire access address (including the LSBs that are discarded, but discarding the Controller's)
+    parameter FE_DATA_W  = 32,       //Data width - word size used for the cache
+    parameter N_WAYS   = 1,        //Number of Cache Ways (Needs to be Potency of 2: 1, 2, 4, 8, ..)
+    parameter LINE_OFF_W = 3,  //Line-Offset Width - 2**NLINE_W total cache lines
+    parameter WORD_OFF_W = 1,      //Word-Offset Width - 2**OFFSET_W total FE_DATA_W words per line - WARNING about LINE2MEM_W (can cause word_counter [-1:0]
+    parameter WTBUF_DEPTH_W = 4,   //Depth Width of Write-Through Buffer
     //Replacement policy (N_WAYS > 1)
-    parameter REP_POLICY = `PLRU_mru, //LRU - Least Recently Used; PLRU_mru (1) - mru-based pseudoLRU; PLRU_tree (3) - tree-based pseudoLRU 
+    parameter REP_POLICY = 0,//`PLRU_mru, //LRU - Least Recently Used; PLRU_mru (1) - mru-based pseudoLRU; PLRU_tree (3) - tree-based pseudoLRU 
     //Do NOT change - memory cache's parameters - dependency
     parameter NWAY_W   = $clog2(N_WAYS),  //Cache Ways Width
     parameter FE_NBYTES  = FE_DATA_W/8,        //Number of Bytes per Word
@@ -30,7 +32,7 @@ module iob_cache
     parameter LINE2MEM_W = WORD_OFF_W-$clog2(BE_DATA_W/FE_DATA_W),//Logarithm Ratio between the size of the cache-line and the BE's data width 
     /*---------------------------------------------------*/
     //Write Policy 
-    parameter WRITE_POL = `WRITE_THROUGH, //write policy: write-through (0), write-back (1)
+    parameter WRITE_POL = 1, //write policy: write-through (0), write-back (1)
     /*---------------------------------------------------*/
     //Controller's options
     parameter CTRL_CACHE = 0, //Adds a Controller to the cache, to use functions sent by the master or count the hits and misses
@@ -41,23 +43,23 @@ module iob_cache
     input                                       reset,
     //Master i/f
     input                                       valid,
-`ifdef WORD_ADDR   
+// `ifdef WORD_ADDR   
     input [CTRL_CACHE + FE_ADDR_W -1:FE_BYTE_W] addr, //MSB is used for Controller selection
-`else
-    input [CTRL_CACHE + FE_ADDR_W -1:0]         addr, //MSB is used for Controller selection
-`endif
+// `else
+//     input [CTRL_CACHE + FE_ADDR_W -1:0]         addr, //MSB is used for Controller selection
+// `endif
     input [FE_DATA_W-1:0]                       wdata,
     input [FE_NBYTES-1:0]                       wstrb,
     output [FE_DATA_W-1:0]                      rdata,
     output                                      ready,
     output [1:0] debug,
-`ifdef CTRL_IO
+// `ifdef CTRL_IO
     //control-status io
     input                                       force_inv_in, //force 1'b0 if unused
     output                                      force_inv_out, 
     input                                       wtb_empty_in, //force 1'b1 if unused
     output                                      wtb_empty_out, 
-`endif  
+// `endif  
     //Slave i/f - Native
     output                                      mem_valid,
     output [BE_ADDR_W-1:0]                      mem_addr,

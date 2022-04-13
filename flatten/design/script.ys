@@ -14,8 +14,10 @@ read_verilog replacement-policy.v
 read_verilog iob_sp_reg_file.v
 read_verilog write-channel-native.v
 
-# elaborate design hierarchy
+
+#elaborate design hierarchy
 hierarchy -check -top iob_cache
+
 
 
 
@@ -24,13 +26,19 @@ proc; opt; fsm; opt; memory; opt
 # proc_mux
 # fsm; opt;
 
+#proc 
+
+flatten
 # proc -nomux -noopt -ifx
 
-# proc_rmdead
+proc_rmdead
+#freduce 
+opt_reduce -fine
+opt_clean -purge
 
-flatten 
-
+proc_clean
 select -module iob_cache
 
+
 # write inline design
-write_verilog -selected inline_16_32.v
+write_verilog -selected inline_16_32_test.v

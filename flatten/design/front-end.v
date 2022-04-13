@@ -104,6 +104,7 @@ module front_end
              addr_reg  <= 0;
              wdata_reg <= 0;
              wstrb_reg <= 0;
+             debug <= 2'b0;
              
           end
         else
@@ -134,17 +135,20 @@ module front_end
   always @(posedge clk)
     begin
       if(ready == 1)
-        if (wstrb == 0)
-          if( addr[FE_ADDR_W-1:FE_BYTE_W] == 14'h1234 && rdata == 32'hDEADBEEF )
+        // debug <= 2'b11;
+        if (wstrb == 0) begin
+           $display("%d,%d", FE_ADDR_W, FE_BYTE_W);
+              $display("%b", addr);
+              $display("%b",  addr[FE_ADDR_W-1:FE_BYTE_W]);
+        
+          if( addr[FE_ADDR_W-1:FE_BYTE_W] == 10'h1234 && rdata == 32'hDEADBEEF )
             begin
-              // $display("%d,%d", FE_ADDR_W, FE_BYTE_W);
-              // $display("%b", addr);
-              // $display("%b",  addr[FE_ADDR_W-1:FE_BYTE_W]);
+             
 
               
               // $display("%b", rdata);
               $display("FOUND");
-              debug = 2'b11;
+              debug <= 2'b01;
               // debugOutput2 <= 1;
               // debugOutput3 <= 0;
               // debugOutput4 <= 1;
@@ -153,13 +157,14 @@ module front_end
             begin
               debug = 2'b10;
             end
-          // else if( addr[FE_ADDR_W-1:FE_BYTE_W] == 13'h308 && rdata == 32'h01020304)
-          //   begin
+          else if( addr[FE_ADDR_W-1:FE_BYTE_W] == 13'h308 && rdata == 32'h01020304)
+            begin
           //     assign debugOutput = 8'h3;
           //     debugOutput2 <= 1;
           //     debugOutput3 <= 1;
           //     debugOutput4 <= 0;
-          //   end
+              debug = 2'b11;
+            end
           // else if( addr[FE_ADDR_W-1:FE_BYTE_W] == 13'hF00 && rdata == 32'hF1E2D3C4)
           //     begin
           //       assign debugOutput = 8'h4;
@@ -174,14 +179,14 @@ module front_end
           //       debugOutput3 <= 1;
           //       debugOutput4 <= 1;
           //     end
-          else
-              begin
-                debug = 2'b0;
+          // else
+          //     begin
+          //       debug <= 2'b0;
                 
-              end
-        else
-         begin
-          debug = 2'bx;
+          //     end
+        // else
+        //  begin
+        //   debug <= 2'b0;
         
 
          end

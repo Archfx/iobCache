@@ -1,0 +1,10 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/aruna/Downloads/iob-cache'
+ 
+make: Leaving directory '/home/aruna/Downloads/iob-cache'
+ 
+Makefile:2: ../Makefile: No such file or directory
+make: *** No rule to make target '../Makefile'.
+make: Failed to remake makefile '../Makefile'.
+make: *** No targets specified and no makefile found.  Stop.
+

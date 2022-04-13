@@ -1,0 +1,889 @@
+$date
+	Wed Apr 13 12:19:53 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module iob_cache_tb $end
+$var wire 1 ! d_select $end
+$var wire 1 " i_select $end
+$var wire 1 # select $end
+$var wire 1 $ ready $end
+$var wire 32 % rdata [31:0] $end
+$var wire 8 & mem_wstrb [7:0] $end
+$var wire 32 ' mem_wdata [31:0] $end
+$var wire 1 ( mem_valid $end
+$var wire 32 ) mem_rdata [31:0] $end
+$var wire 12 * mem_addr [11:0] $end
+$var wire 2 + debug [1:0] $end
+$var reg 10 , addr [11:2] $end
+$var reg 1 - clk $end
+$var reg 1 . instr $end
+$var reg 1 / mem_ready $end
+$var reg 1 0 reset $end
+$var reg 32 1 test [31:0] $end
+$var reg 1 2 valid $end
+$var reg 32 3 wdata [31:0] $end
+$var reg 4 4 wstrb [3:0] $end
+$scope module cache $end
+$var wire 10 5 addr [11:2] $end
+$var wire 1 - clk $end
+$var wire 5 6 ctrl_addr [4:0] $end
+$var wire 1 7 ctrl_rdata $end
+$var wire 1 8 ctrl_ready $end
+$var wire 1 9 ctrl_valid $end
+$var wire 10 : data_addr_reg [11:2] $end
+$var wire 1 ; data_valid_reg $end
+$var wire 32 < data_wdata_reg [31:0] $end
+$var wire 4 = data_wstrb_reg [3:0] $end
+$var wire 1 > force_inv_in $end
+$var wire 1 ? force_inv_out $end
+$var wire 1 @ invalidate $end
+$var wire 1 / mem_ready $end
+$var wire 1 A read_hit $end
+$var wire 1 B read_miss $end
+$var wire 1 0 reset $end
+$var wire 1 2 valid $end
+$var wire 32 C wdata [31:0] $end
+$var wire 1 D write_hit $end
+$var wire 1 E write_miss $end
+$var wire 4 F write_wstrb [3:0] $end
+$var wire 4 G wstrb [3:0] $end
+$var wire 1 H wtb_empty_in $end
+$var wire 1 I wtbuf_empty $end
+$var wire 1 J wtbuf_full $end
+$var wire 1 K wtb_empty_out $end
+$var wire 64 L write_wdata [63:0] $end
+$var wire 1 M write_valid $end
+$var wire 1 N write_ready $end
+$var wire 9 O write_addr [11:3] $end
+$var wire 1 P replace_valid $end
+$var wire 9 Q replace_addr [11:3] $end
+$var wire 1 R replace $end
+$var wire 1 $ ready $end
+$var wire 1 S read_valid $end
+$var wire 32 T read_rdata [31:0] $end
+$var wire 1 U read_addr $end
+$var wire 32 V rdata [31:0] $end
+$var wire 4 W mem_wstrb [3:0] $end
+$var wire 32 X mem_wdata [31:0] $end
+$var wire 1 ( mem_valid $end
+$var wire 32 Y mem_rdata [31:0] $end
+$var wire 12 Z mem_addr [11:0] $end
+$var wire 2 [ debug [1:0] $end
+$var wire 1 \ data_valid $end
+$var wire 1 ] data_ready $end
+$var wire 32 ^ data_rdata [31:0] $end
+$var wire 10 _ data_addr [11:2] $end
+$scope begin genblk2 $end
+$upscope $end
+$scope begin genblk4 $end
+$upscope $end
+$scope module back_end $end
+$var wire 1 - clk $end
+$var wire 1 / mem_ready $end
+$var wire 1 ( mem_valid $end
+$var wire 1 0 reset $end
+$var wire 4 ` write_wstrb [3:0] $end
+$var wire 64 a write_wdata [63:0] $end
+$var wire 1 M write_valid $end
+$var wire 1 N write_ready $end
+$var wire 9 b write_addr [11:3] $end
+$var wire 1 P replace_valid $end
+$var wire 9 c replace_addr [11:3] $end
+$var wire 1 R replace $end
+$var wire 1 S read_valid $end
+$var wire 32 d read_rdata [31:0] $end
+$var wire 1 U read_addr $end
+$var wire 4 e mem_wstrb [3:0] $end
+$var wire 32 f mem_wdata [31:0] $end
+$var wire 1 g mem_valid_write $end
+$var wire 1 h mem_valid_read $end
+$var wire 32 i mem_rdata [31:0] $end
+$var wire 12 j mem_addr_write [11:0] $end
+$var wire 12 k mem_addr_read [11:0] $end
+$var wire 12 l mem_addr [11:0] $end
+$scope module read_fsm $end
+$var wire 1 - clk $end
+$var wire 1 / mem_ready $end
+$var wire 1 0 reset $end
+$var wire 1 P replace_valid $end
+$var wire 9 m replace_addr [11:3] $end
+$var wire 32 n read_rdata [31:0] $end
+$var wire 32 o mem_rdata [31:0] $end
+$var wire 12 p mem_addr [11:0] $end
+$var reg 1 h mem_valid $end
+$var reg 1 U read_addr $end
+$var reg 1 S read_valid $end
+$var reg 1 R replace $end
+$scope begin genblk1 $end
+$var reg 2 q state [1:0] $end
+$var reg 1 r word_counter $end
+$upscope $end
+$upscope $end
+$scope module write_fsm $end
+$var wire 1 - clk $end
+$var wire 1 / mem_ready $end
+$var wire 1 0 reset $end
+$var wire 4 s wstrb [3:0] $end
+$var wire 64 t wdata [63:0] $end
+$var wire 1 M valid $end
+$var wire 32 u mem_wdata [31:0] $end
+$var wire 12 v mem_addr [11:0] $end
+$var wire 9 w addr [11:3] $end
+$var reg 1 g mem_valid $end
+$var reg 4 x mem_wstrb [3:0] $end
+$var reg 1 N ready $end
+$scope begin genblk6 $end
+$var reg 1 y state $end
+$var reg 1 z word_counter $end
+$var reg 1 { word_counter_reg $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module cache_memory $end
+$var wire 9 | addr [11:3] $end
+$var wire 10 } addr_reg [11:2] $end
+$var wire 1 - clk $end
+$var wire 1 ~ hit $end
+$var wire 1 !" invalidate $end
+$var wire 1 "" read_access $end
+$var wire 1 U read_addr $end
+$var wire 1 A read_hit $end
+$var wire 1 B read_miss $end
+$var wire 32 #" read_rdata [31:0] $end
+$var wire 1 S read_valid $end
+$var wire 1 R replace $end
+$var wire 1 0 reset $end
+$var wire 1 ; valid_reg $end
+$var wire 32 $" wdata_reg [31:0] $end
+$var wire 1 %" write_access $end
+$var wire 1 D write_hit $end
+$var wire 1 E write_miss $end
+$var wire 1 N write_ready $end
+$var wire 4 &" write_wstrb [3:0] $end
+$var wire 4 '" wstrb_reg [3:0] $end
+$var wire 1 I wtbuf_empty $end
+$var wire 1 J wtbuf_full $end
+$var wire 64 (" write_wdata [63:0] $end
+$var wire 1 M write_valid $end
+$var wire 9 )" write_addr [11:3] $end
+$var wire 1 *" way_hit $end
+$var wire 1 \ valid $end
+$var wire 6 +" tag [5:0] $end
+$var wire 1 P replace_valid $end
+$var wire 9 ," replace_addr [11:3] $end
+$var wire 1 ] ready $end
+$var wire 32 -" rdata [31:0] $end
+$var wire 1 ." raw $end
+$var wire 1 /" offset $end
+$var wire 6 0" line_tag [5:0] $end
+$var wire 64 1" line_rdata [63:0] $end
+$var wire 3 2" index_reg [2:0] $end
+$var wire 3 3" index [2:0] $end
+$var reg 1 4" dirty $end
+$var reg 8 5" dirty_reg [7:0] $end
+$var reg 8 6" line_wstrb [7:0] $end
+$var reg 1 7" offset_prev $end
+$var reg 1 8" v $end
+$var reg 8 9" v_reg [7:0] $end
+$var reg 1 :" way_hit_prev $end
+$var reg 1 ;" write_hit_prev $end
+$scope begin genblk12 $end
+$upscope $end
+$scope begin genblk18 $end
+$scope begin genblk19 $end
+$upscope $end
+$scope module tag_memory $end
+$var wire 3 <" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 6 =" din [5:0] $end
+$var wire 1 P we $end
+$var wire 1 \ en $end
+$var reg 6 >" dout [5:0] $end
+$upscope $end
+$upscope $end
+$scope begin genblk2 $end
+$upscope $end
+$scope begin genblk4 $end
+$upscope $end
+$scope begin genblk6 $end
+$upscope $end
+$scope begin genblk8 $end
+$upscope $end
+$scope begin n_ways_block[0] $end
+$scope begin line2mem_block[0] $end
+$scope begin BE_FE_block[0] $end
+$scope module cache_memory $end
+$var wire 3 ?" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 32 @" data_in [31:0] $end
+$var wire 4 A" we [3:0] $end
+$var wire 1 \ en $end
+$var wire 32 B" data_out [31:0] $end
+$scope begin ram[0] $end
+$scope module iob_cache_mem $end
+$var wire 3 C" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 8 D" din [7:0] $end
+$var wire 1 E" we $end
+$var wire 1 \ en $end
+$var reg 8 F" dout [7:0] $end
+$upscope $end
+$upscope $end
+$scope begin ram[1] $end
+$scope module iob_cache_mem $end
+$var wire 3 G" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 8 H" din [7:0] $end
+$var wire 1 I" we $end
+$var wire 1 \ en $end
+$var reg 8 J" dout [7:0] $end
+$upscope $end
+$upscope $end
+$scope begin ram[2] $end
+$scope module iob_cache_mem $end
+$var wire 3 K" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 8 L" din [7:0] $end
+$var wire 1 M" we $end
+$var wire 1 \ en $end
+$var reg 8 N" dout [7:0] $end
+$upscope $end
+$upscope $end
+$scope begin ram[3] $end
+$scope module iob_cache_mem $end
+$var wire 3 O" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 8 P" din [7:0] $end
+$var wire 1 Q" we $end
+$var wire 1 \ en $end
+$var reg 8 R" dout [7:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope begin line2mem_block[1] $end
+$scope begin BE_FE_block[0] $end
+$scope module cache_memory $end
+$var wire 3 S" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 32 T" data_in [31:0] $end
+$var wire 4 U" we [3:0] $end
+$var wire 1 \ en $end
+$var wire 32 V" data_out [31:0] $end
+$scope begin ram[0] $end
+$scope module iob_cache_mem $end
+$var wire 3 W" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 8 X" din [7:0] $end
+$var wire 1 Y" we $end
+$var wire 1 \ en $end
+$var reg 8 Z" dout [7:0] $end
+$upscope $end
+$upscope $end
+$scope begin ram[1] $end
+$scope module iob_cache_mem $end
+$var wire 3 [" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 8 \" din [7:0] $end
+$var wire 1 ]" we $end
+$var wire 1 \ en $end
+$var reg 8 ^" dout [7:0] $end
+$upscope $end
+$upscope $end
+$scope begin ram[2] $end
+$scope module iob_cache_mem $end
+$var wire 3 _" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 8 `" din [7:0] $end
+$var wire 1 a" we $end
+$var wire 1 \ en $end
+$var reg 8 b" dout [7:0] $end
+$upscope $end
+$upscope $end
+$scope begin ram[3] $end
+$scope module iob_cache_mem $end
+$var wire 3 c" addr [2:0] $end
+$var wire 1 - clk $end
+$var wire 8 d" din [7:0] $end
+$var wire 1 e" we $end
+$var wire 1 \ en $end
+$var reg 8 f" dout [7:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module front_end $end
+$var wire 10 g" addr [11:2] $end
+$var wire 1 - clk $end
+$var wire 5 h" ctrl_addr [4:0] $end
+$var wire 1 7 ctrl_rdata $end
+$var wire 1 8 ctrl_ready $end
+$var wire 1 9 ctrl_valid $end
+$var wire 10 i" data_addr [11:2] $end
+$var wire 10 j" data_addr_reg [11:2] $end
+$var wire 32 k" data_rdata [31:0] $end
+$var wire 1 ] data_ready $end
+$var wire 1 \ data_valid $end
+$var wire 1 ; data_valid_reg $end
+$var wire 32 l" data_wdata_reg [31:0] $end
+$var wire 4 m" data_wstrb_reg [3:0] $end
+$var wire 1 0 reset $end
+$var wire 1 2 valid $end
+$var wire 32 n" wdata [31:0] $end
+$var wire 4 o" wstrb [3:0] $end
+$var wire 1 p" valid_int $end
+$var wire 1 $ ready $end
+$var wire 32 q" rdata [31:0] $end
+$var reg 10 r" addr_reg [11:2] $end
+$var reg 2 s" debug [1:0] $end
+$var reg 1 t" valid_reg $end
+$var reg 32 u" wdata_reg [31:0] $end
+$var reg 4 v" wstrb_reg [3:0] $end
+$scope begin genblk2 $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module native_ram $end
+$var wire 10 w" addr [9:0] $end
+$var wire 1 - clk $end
+$var wire 32 x" din [31:0] $end
+$var wire 1 ( en $end
+$var wire 1 y" we $end
+$var reg 32 z" dout [31:0] $end
+$upscope $end
+$scope task cache_wait $end
+$var reg 1 {" ready $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+x{"
+bx z"
+0y"
+bx x"
+bx w"
+b0 v"
+b0 u"
+0t"
+b0 s"
+b0 r"
+bx q"
+0p"
+b0 o"
+b0 n"
+b0 m"
+b0 l"
+bx k"
+b0 j"
+b0 i"
+bx h"
+b0 g"
+bx f"
+0e"
+b0 d"
+b0 c"
+bx b"
+0a"
+b0 `"
+b0 _"
+bx ^"
+0]"
+b0 \"
+b0 ["
+bx Z"
+0Y"
+b0 X"
+b0 W"
+bx V"
+b0 U"
+b0 T"
+b0 S"
+bx R"
+0Q"
+b0 P"
+b0 O"
+bx N"
+0M"
+b0 L"
+b0 K"
+bx J"
+0I"
+b0 H"
+b0 G"
+bx F"
+0E"
+b0 D"
+b0 C"
+bx B"
+b0 A"
+b0 @"
+b0 ?"
+bx >"
+b0 ="
+b0 <"
+x;"
+x:"
+b0 9"
+x8"
+x7"
+b0 6"
+b0 5"
+x4"
+b0 3"
+b0 2"
+bx 1"
+bx 0"
+0/"
+0."
+bx -"
+b0 ,"
+b0 +"
+x*"
+bx000 )"
+bx ("
+b0 '"
+bx &"
+0%"
+b0 $"
+bx #"
+0""
+x!"
+x~
+b0 }
+b0 |
+x{
+0z
+0y
+b0 x
+bx000 w
+bx v
+bx u
+bx t
+bx s
+0r
+b0 q
+b0 p
+bx o
+bx n
+b0 m
+bx l
+b0 k
+bx j
+bx i
+0h
+0g
+bx f
+b0 e
+bx d
+b0 c
+bx000 b
+bx a
+bx `
+b0 _
+bx ^
+0]
+0\
+b0 [
+bx Z
+bx Y
+bx X
+b0 W
+bx V
+xU
+bx T
+0S
+0R
+b0 Q
+0P
+bx000 O
+1N
+0M
+bx L
+xK
+0J
+1I
+zH
+b0 G
+bx F
+xE
+xD
+b0 C
+xB
+xA
+0@
+0?
+z>
+b0 =
+b0 <
+0;
+b0 :
+x9
+x8
+x7
+bx 6
+b0 5
+b0 4
+b0 3
+02
+b0 1
+10
+x/
+0.
+1-
+b0 ,
+b0 +
+bx *
+bx )
+0(
+bx '
+b0 &
+bx %
+0$
+0#
+0"
+0!
+$end
+#1000
+0-
+#2000
+0~
+1N
+0R
+0*"
+0/
+0{
+0U
+04"
+08"
+07"
+0;"
+1-
+#3000
+0-
+#4000
+0:"
+1-
+#5000
+0-
+#6000
+1-
+#7000
+0-
+#8000
+1-
+#9000
+0-
+#10000
+00
+1-
+#11000
+0-
+#12000
+1-
+#13000
+0-
+#14000
+1-
+#15000
+0-
+#16000
+1-
+#17000
+0-
+#18000
+1-
+#19000
+0-
+#20000
+1-
+#21000
+0-
+#22000
+b10 ?"
+b10 C"
+b10 G"
+b10 K"
+b10 O"
+b10 S"
+b10 W"
+b10 ["
+b10 _"
+b10 c"
+bx010 O
+bx010 b
+bx010 w
+bx010 )"
+b10 3"
+b10 <"
+b100011010000 k
+b100011010000 p
+b100011010 Q
+b100011010 c
+b100011010 m
+b100011010 ,"
+b100011010 |
+1\
+b1000110100 _
+b1000110100 i"
+b1000110100 5
+b1000110100 g"
+1p"
+12
+b1111 4
+b1111 G
+b1111 o"
+b11011110101011011011111011101111 3
+b11011110101011011011111011101111 C
+b11011110101011011011111011101111 n"
+b1000110100 ,
+1-
+#23000
+0-
+#24000
+b11101111 D"
+b10111110 H"
+b10101101 L"
+b11011110 P"
+b11101111 X"
+b10111110 \"
+b10101101 `"
+b11011110 d"
+1P
+b1111 6"
+b11011110101011011011111011101111 @"
+b11011110101011011011111011101111 T"
+b100011 +"
+b100011 ="
+b10 2"
+1%"
+b1111 =
+b1111 '"
+b1111 m"
+b1111 v"
+b11011110101011011011111011101111 <
+b11011110101011011011111011101111 $"
+b11011110101011011011111011101111 l"
+b11011110101011011011111011101111 u"
+b1000110100 :
+b1000110100 }
+b1000110100 j"
+b1000110100 r"
+1;
+1t"
+1-
+#25000
+0-
+#26000
+b1000110100 w"
+bx D"
+bx H"
+bx L"
+bx P"
+bx X"
+bx \"
+bx `"
+bx d"
+0P
+b100011010000 *
+b100011010000 Z
+b100011010000 l
+1(
+bx @"
+bx T"
+b0 6"
+1h
+1R
+b1 q
+b100 9"
+1;"
+1-
+#27000
+0-
+#28000
+1E"
+1I"
+1M"
+1Q"
+b1111 A"
+b1000110101 w"
+b1111 6"
+b100011010100 *
+b100011010100 Z
+b100011010100 l
+1*"
+1S
+b100011010100 k
+b100011010100 p
+1r
+1h
+1N
+b100011010000 j
+b100011010000 v
+b100011010 O
+b100011010 b
+b100011010 w
+b100011010 )"
+b100011 0"
+b100011 >"
+18"
+1/
+1-
+#29000
+0-
+#30000
+0E"
+0I"
+0M"
+0Q"
+1Y"
+1]"
+1a"
+1e"
+b1000110100 w"
+b0 A"
+b1111 U"
+b100011010000 *
+b100011010000 Z
+b100011010000 l
+0(
+1S
+b100011010000 k
+b100011010000 p
+0r
+0h
+b11110000 6"
+1U
+1:"
+1-
+#31000
+0-
+#32000
+0Y"
+0]"
+0a"
+0e"
+b0 U"
+b0 6"
+0S
+1N
+b10 q
+0U
+0/
+1-
+#33000
+0-
+#34000
+1$
+1]
+1E"
+1I"
+1M"
+1Q"
+1~
+b1111 A"
+b11101111 D"
+b10111110 H"
+b10101101 L"
+b11011110 P"
+b11101111 X"
+b10111110 \"
+b10101101 `"
+b11011110 d"
+b11011110101011011011111011101111 @"
+b11011110101011011011111011101111 T"
+b1111 6"
+0R
+b0 q
+1-
+#35000
+0-
+#36000
+b100 5"
+0p"
+02
+1-
+#37000
+0-
+#38000
+0E"
+0I"
+0M"
+0Q"
+b0 A"
+b0 6"
+0%"
+0$
+0]
+0;
+0t"
+14"
+1p"
+12
+b0 4
+b0 G
+b0 o"
+1-
+#39000
+0-
+#40000
+1""
+1$
+1]
+b11011110101011011011111011101111 %
+b11011110101011011011111011101111 V
+b11011110101011011011111011101111 q"
+b11011110101011011011111011101111 ^
+b11011110101011011011111011101111 -"
+b11011110101011011011111011101111 k"
+b11011110101011011011111011101111 '
+b11011110101011011011111011101111 X
+b11011110101011011011111011101111 f
+b11011110101011011011111011101111 u
+b11011110101011011011111011101111 x"
+b0 =
+b0 '"
+b0 m"
+b0 v"
+1;
+1t"
+0;"
+b11101111 F"
+b10111110 J"
+b10101101 N"
+bx11011110101011011011111011101111 L
+bx11011110101011011011111011101111 a
+bx11011110101011011011111011101111 t
+bx11011110101011011011111011101111 ("
+bx11011110101011011011111011101111 1"
+b11011110101011011011111011101111 B"
+b11011110 R"
+1-
+#41000
+0-
+#42000
+b1 +
+b1 [
+b1 s"
+0p"
+02
+1-
+#43000
+0-
+#44000
+0\
+0""
+0$
+0]
+0;
+0t"
+1-

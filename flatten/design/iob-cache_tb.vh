@@ -2,15 +2,9 @@
 `define N_WAYS 1
 `define LINE_OFF_W 3
 `define WORD_OFF_W 1
-`define ADDR_W 16
+`define ADDR_W 12
 `define DATA_W 32
 `define N_BYTES 4
-// `define N_WAYS 1
-// `define LINE_OFF_W 1
-// `define WORD_OFF_W 1
-// `define ADDR_W 8
-// `define DATA_W 8
-// `define N_BYTES 0
 // Replacement Policy (N_WAYS > 1 only) - check below the values
 `define REP_POLICY 0
 
@@ -19,22 +13,19 @@
 
 
 //Back-end Memory interface AXI or Native  
-// `define AXI //comment for Native
+//`define AXI //comment for Native
 
 //Cache back-end parameters
 `define MEM_ADDR_W 12
 `define MEM_DATA_W 32
 `define MEM_N_BYTES 8
-// `define MEM_ADDR_W 3
-// `define MEM_DATA_W 8
-// `define MEM_N_BYTES 1
 
 //Write-through Buffer depth
-`define WTBUF_DEPTH_W 2
+`define WTBUF_DEPTH_W 4
 
 
 //Cache Controller - comment to remove it
-// `define CTRL
+`define CTRL
 
 
 //Replacement Policy
@@ -46,8 +37,6 @@
 //CONTROLLER
 `define CTRL_COUNTER_W 3
 `define CTRL_ADDR_W 5
-// `define CTRL_COUNTER_W 1
-// `define CTRL_ADDR_W 1
 
 //counter for number of hit and misses
 `define READ_HIT   (`CTRL_COUNTER_W'd1)
